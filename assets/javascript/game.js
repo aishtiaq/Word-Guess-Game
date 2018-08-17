@@ -12,13 +12,12 @@ var game = {
         var wordDiv = document.getElementById("words");
         wordDiv.innerHTML='';
         this.currWord = this.words[Math.floor(Math.random() * this.words.length)];
-            
+        //console.log(this.currWord);    
         for (var i=0; i < this.currWord.length; i++) {
             var s = document.createElement("span");
             s.setAttribute("id", "span"+i); 
-            console.log(this.currWord[i]);
             if(this.currWord[i]==' '){
-                s.innerHTML=" | ";
+                s.innerHTML="&nbsp;";
                 this.match[i]=true;
             }
             else {
@@ -73,6 +72,7 @@ document.onkeyup = function(event) {
     // determine if they is a letter
     else if (game.gameStarted === true && event.which >= 65 && event.which <= 90
         && game.attempts > 0) {
+        game.message("&nbsp;");
         var guessed=false;
         userGuess = userGuess.toLowerCase();
         
